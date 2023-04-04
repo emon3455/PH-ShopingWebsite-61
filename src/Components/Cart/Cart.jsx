@@ -35,6 +35,9 @@ const Cart = (props) => {
             <h4>Tax: ${tax.toFixed(2)}</h4>
             <h3>Grrand Total: ${grandTotal.toFixed(2)}</h3>
             <button onClick={handleClearCart} className='clearCart-btn'> Clear All <i className="fa-solid fa-trash-can"></i></button>
+            {
+                props.children
+            }
         </div>
     );
 };

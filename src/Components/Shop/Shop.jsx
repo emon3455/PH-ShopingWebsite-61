@@ -3,6 +3,7 @@ import { addToDb, deleteShoppingCart, getShoppingCart } from '../../../public/ut
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import "./Shop.css"
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
 
@@ -78,7 +79,9 @@ const Shop = () => {
                 <Cart
                  cart={cart}
                  handleClearCart={handleClearCart}
-                ></Cart>
+                >
+                    <button className='review-order-btn'><Link className='link-btn' to="/orders">Review Orders</Link></button>
+                </Cart>
 
             </div>
             
