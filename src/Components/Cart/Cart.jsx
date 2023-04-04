@@ -30,7 +30,7 @@ const Cart = (props) => {
             
             <h2>Order Details</h2>
             <h4>Item Selected: {quantity}</h4>
-            <h4>Total Price: ${total}</h4>
+            <h4>Total Price: $ {total}</h4>
             <h4>Total Shipping: {shiping}</h4>
             <h4>Tax: ${tax.toFixed(2)}</h4>
             <h3>Grrand Total: ${grandTotal.toFixed(2)}</h3>
