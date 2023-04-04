@@ -6,3 +6,13 @@
 .cart h2{
     text-align: center;
 }
+
+.clearCart-btn{
+    background-color: #ee5151;
+    color: aliceblue;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+}

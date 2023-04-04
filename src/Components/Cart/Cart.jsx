@@ -4,6 +4,7 @@ import "./Cart.css"
 const Cart = (props) => {
 
     const {cart} = props
+    const {handleClearCart} = props
 
     let total =0;
     let shiping = 0;
@@ -33,6 +34,7 @@ const Cart = (props) => {
             <h4>Total Shipping: {shiping}</h4>
             <h4>Tax: ${tax.toFixed(2)}</h4>
             <h3>Grrand Total: ${grandTotal.toFixed(2)}</h3>
+            <button onClick={handleClearCart} className='clearCart-btn'> Clear All <i className="fa-solid fa-trash-can"></i></button>
         </div>
     );
 };
