@@ -1,0 +1,30 @@
+.header{
+    background-color: #1b1b1b;
+    padding: 0.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerNav a{
+    text-decoration: none;
+    color: white;
+    margin-right: 1.4rem;
+    font-size: 1.2rem;
+    transition: all 0.5s ease-in;
+}
+
+.headerNav a:hover{
+    color: #dd6648;  
+}
+
+
+@media screen and (max-width: 790px) {
+    .header{
+        flex-direction: column;
+        width: 100%;
+    }
+    .headerNav a{
+        margin-right: 1rem;
+    }
+}
