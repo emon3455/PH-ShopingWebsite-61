@@ -1,11 +1,13 @@
 .review-cart{
-    width: 80%;
+    width: 90%;
     background-color: aliceblue;
     padding: 0.2rem 0.8rem;
     margin: 1rem auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid gray;
+    border-radius: 10px;
 }
 .img-container{
     width: 60px;
@@ -30,7 +32,11 @@
 .icon-container i{
     font-size: 1.2rem;
     color: white;
-    padding: 1rem;
+    padding: 0.6rem;
     cursor: pointer;
+}
+
+.product-info > h4 , .product-info > p{
+    margin: 0.3rem;
 }
 

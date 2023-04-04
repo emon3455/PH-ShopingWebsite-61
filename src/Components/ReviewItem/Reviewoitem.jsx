@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ReviewItem.css"
 
-const Reviewoitem = ({cart}) => {
+const Reviewoitem = ({cart, handleCart}) => {
 
     const {id,img,name,price,quantity} = cart;
 
@@ -22,7 +22,7 @@ const Reviewoitem = ({cart}) => {
                 
             </div>
 
-            <div className="icon-container">
+            <div onClick={()=> handleCart(id)} className="icon-container">
                     <i className="fa-solid fa-trash-can"></i>
             </div>
             
