@@ -12,6 +12,7 @@ import Layout from './Components/Layout/Layout';
 import Orders from './Components/Orders/Orders';
 import Inventory from './Components/Inventory/Inventory';
 import Login from './Components/LogIn/Login';
+import cartProductsLoader from './Loaders/CartProductsLoader';
 
 const router  = createBrowserRouter([
   {
@@ -24,7 +25,8 @@ const router  = createBrowserRouter([
       },
       {
         path: "/orders",
-        element: <Orders></Orders>
+        element: <Orders></Orders>,
+        loader: cartProductsLoader
       },
       {
         path: "inventory",
