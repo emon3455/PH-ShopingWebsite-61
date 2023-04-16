@@ -1,2 +1,2 @@
-# PH-Shoping-Website-55
+# Amazon-Lite
 Live website: https://spontaneous-jalebi-18d01c.netlify.app/
