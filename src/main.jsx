@@ -14,6 +14,7 @@ import Inventory from './Components/Inventory/Inventory';
 import Login from './Components/LogIn/Login';
 import cartProductsLoader from './Loaders/CartProductsLoader';
 import Checkout from './Components/Checkout/Checkout';
+import SignUp from './Components/SignUp/SignUp';
 
 const router  = createBrowserRouter([
   {
@@ -30,16 +31,20 @@ const router  = createBrowserRouter([
         loader: cartProductsLoader
       },
       {
-        path: "inventory",
+        path: "/inventory",
         element: <Inventory></Inventory>
       },
       {
-        path: "checkout",
+        path: "/checkout",
         element: <Checkout></Checkout>
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login></Login>
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>
       }
     ]
   }
