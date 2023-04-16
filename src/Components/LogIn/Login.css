@@ -1,22 +1,23 @@
 .form-container{
-    max-width: 350px;
-    max-height: 400px;
+    max-width: 300px;
+    max-height: 500px;
     border: 1px solid gray;  
     padding: 2rem;  
-    margin: 4rem auto;
+    margin: 2rem auto;
     border-radius: 10px;
+    box-shadow: #f8bd71 -10px 10px;
 }
 
 .form-title{
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 900;
 }
 
 .form-controler{
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: gray;
 }
 
