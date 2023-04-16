@@ -8,7 +8,9 @@ const Layout = () => {
 
             <Header></Header>
 
-            <Outlet></Outlet>
+            <main style={{padding: "1rem"}}>
+                <Outlet></Outlet>
+            </main>
 
         </div>
     );

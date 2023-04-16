@@ -1,6 +1,6 @@
-.form-container{
-    max-width: 300px;
-    max-height: 500px;
+.container{
+    max-width: 400px;
+    max-height: 570px;
     border: 1px solid gray;  
     padding: 2rem;  
     margin: 2rem auto;
@@ -46,7 +46,7 @@
 .options{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .link-text{
@@ -72,6 +72,11 @@
 .social-login:hover{
     background-color: #fac279;
     cursor: pointer;
+}
+
+.error{
+    text-align: center;
+    color: #e44343;
 }
 
 .google-logo{

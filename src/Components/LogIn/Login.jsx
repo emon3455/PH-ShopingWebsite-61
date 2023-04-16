@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Login.css"
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
+
+    const {signIn} = useContext(AuthContext);
+
+    const [error , setError] = useState("");
+
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email , password);
+
+        signIn(email,password)
+        .then(res=>{
+            const logedUser = res.user;
+            alert("Welcome!!");
+            console.log(logedUser);
+            form.reset();
+        })
+        .catch(er=>{
+            setError(er.message);
+        })
+    }
+
     return (
         <div className='container'>
             <div className="form-container">
 
                 <h2 className='form-title'>Log In</h2>
 
-                <form className='form'>
+                <p className='error'>{error}</p>
+
+                <form onSubmit={handleSubmit} className='form'>
                     <div className="form-controler">
                         <label htmlFor="email">Email</label>
                         <input type="email" name='email' id='email' required/>
@@ -27,9 +55,9 @@ const Login = () => {
                     </p>
 
                     <div className="options">
-                        <p>----------------</p>
+                        <p>-------------</p>
                         <p>OR</p>
-                        <p>----------------</p>
+                        <p>-------------</p>
                     </div>
 
                 </form>

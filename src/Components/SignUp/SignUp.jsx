@@ -1,15 +1,58 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import "./../LogIn/Login.css"
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const SignUp = () => {
+
+    const {createUser} = useContext(AuthContext);
+
+
+    const [error , setError] = useState("");
+
+    const handleSubmit =(e)=>{
+
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+
+        setError("");
+        if(password !== confirm){
+            setError("Your Password didn't match");
+            return;
+        }
+        else if(password.length < 6){
+            setError("your password must be atleast 6 character");
+            return;
+        }
+
+        createUser(email,password)
+        .then(res=>{
+            const signedUser = res.user;
+            alert("Your account has been crerated!!");
+            console.log(signedUser);
+            form.reset();
+        })
+        .catch(er=>{
+            setError(er.message);
+        })
+
+
+
+    }
+
     return (
         <div className='container'>
             <div className="form-container">
 
                 <h2 className='form-title'>Sign Up</h2>
 
-                <form className='form'>
+                <p className='error'>{error}</p>
+
+                <form onSubmit={handleSubmit} className='form'>
                     <div className="form-controler">
                         <label htmlFor="email">Email</label>
                         <input type="email" name='email' id='email' required/>
@@ -19,8 +62,8 @@ const SignUp = () => {
                         <input type="password" name='password' id='password' required/>
                     </div>
                     <div className="form-controler">
-                        <label htmlFor="password">Confirm Password</label>
-                        <input type="password" name='password' id='password' required/>
+                        <label htmlFor="confirm">Confirm Password</label>
+                        <input type="password" name='confirm' id='confirm' required/>
                     </div>
                     <button className='login-btn'>
                         Sign Up
@@ -31,9 +74,9 @@ const SignUp = () => {
                     </p>
 
                     <div className="options">
-                        <p>----------------</p>
+                        <p>-------------</p>
                         <p>OR</p>
-                        <p>----------------</p>
+                        <p>-------------</p>
                     </div>
 
                 </form>
