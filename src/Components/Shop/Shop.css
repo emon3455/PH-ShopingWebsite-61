@@ -16,6 +16,19 @@
     background-color: #f7dc92;
 }
 
+.pagination{
+    margin: 1rem 0;
+    text-align: center;
+}
+.pagination button{
+    padding: 0.5rem 1rem;
+    border: none;
+}
+.selected{
+    background-color: #f7dc92;
+    border: none;
+}
+
 @media screen and (max-width: 1024px){
     .shoping-container{
         grid-template-columns: 2fr 2fr;
