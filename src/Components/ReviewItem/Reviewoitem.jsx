@@ -3,7 +3,7 @@ import "./ReviewItem.css"
 
 const Reviewoitem = ({cart, handleCart}) => {
 
-    const {id,img,name,price,quantity} = cart;
+    const {_id,img,name,price,quantity} = cart;
 
     return (
         <div className='review-cart'>
@@ -22,7 +22,7 @@ const Reviewoitem = ({cart, handleCart}) => {
                 
             </div>
 
-            <div onClick={()=> handleCart(id)} className="icon-container">
+            <div onClick={()=> handleCart(_id)} className="icon-container">
                     <i className="fa-solid fa-trash-can"></i>
             </div>
             
