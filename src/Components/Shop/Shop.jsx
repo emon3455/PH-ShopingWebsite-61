@@ -20,18 +20,27 @@ const Shop = () => {
     const pageNumbers = [...Array(totalPages).keys()];
     console.log(pageNumbers);
 
+    // useEffect(() => {
+    //     try {
+    //         fetch("http://localhost:5000/products")
+    //             .then(res => res.json())
+    //             .then(data => setProducts(data))
+    //     }
+    //     catch (ex) {
+    //         console.log(ex);
+    //     }
+    // }, [])
+
     useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`);
 
-        try {
-            fetch("http://localhost:5000/products")
-                .then(res => res.json())
-                .then(data => setProducts(data))
+            const data = await response.json();
+            setProducts(data);
         }
-        catch (ex) {
-            console.log(ex);
-        }
+        fetchData();
+    }, [currentPage, itemsPerPage]);
 
-    }, [])
 
     const handleAddToCart = (product) => {
         const newCart = [...cart, product];
@@ -45,24 +54,38 @@ const Shop = () => {
     }
 
     useEffect(() => {
-
         const storedCart = getShoppingCart();
+        const ids = Object.keys(storedCart);
 
-        const savedCart = [];
-        for (const id in storedCart) {
-            const addededProduct = products.find(product => product._id === id)
+        fetch(`http://localhost:5000/productsByIds`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)
+        })
+            .then(res => res.json())
+            .then(cartProducts => {
+                const savedCart = [];
+                // step 1: get id of the addedProduct
+                for (const id in storedCart) {
+                    // step 2: get product from products state by using id
+                    const addedProduct = cartProducts.find(product => product._id === id)
+                    if (addedProduct) {
+                        // step 3: add quantity
+                        const quantity = storedCart[id];
+                        addedProduct.quantity = quantity;
+                        // step 4: add the added product to the saved cart
+                        savedCart.push(addedProduct);
+                    }
+                    // console.log('added Product', addedProduct)
+                }
+                // step 5: set the cart
+                setCart(savedCart);
+            })
 
-            if (addededProduct) {
-                const quantity = storedCart[id];
-                addededProduct.quantity = quantity;
-                savedCart.push(addededProduct);
-            }
 
-            setCart(savedCart);
-
-        }
-
-    }, [products])
+    }, [])
 
     const options = [5, 10, 15, 20];
     function handleSelectChange(event) {
@@ -102,6 +125,7 @@ const Shop = () => {
                 </div>
 
             </div>
+
             {/* pagination */}
             <div className="pagination">
                 {
